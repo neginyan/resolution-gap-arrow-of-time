@@ -1,0 +1,20 @@
+\section{Gaussian states}
+\label{sec:gaussian}
+
+\begin{theorem}[Gaussian states]
+\label{thm:gaussian}
+Let $\rho_t = \mathcal N(m,S)$ at some instant $t$. Then, for every $\sigma > 0$ and every Hamiltonian flow,
+\begin{equation}
+R = \frac{\tr(F\,\Sym\bar J)}{\tr F} \leq \lambda_{\max}(\Sym\bar J) \leq \kappa,
+\label{eq:gaussian}
+\end{equation}
+where $\bar J = \E_{\rho_t}[Df]$ and $F = (S + \sigma^2 I)^{-1}$. Hence Conjecture~1 of Ref.~\cite{namba2026arrow} holds for all Gaussian states, in any dimension.
+\end{theorem}
+
+\begin{proof}
+$Y$ is Gaussian with covariance $S + \sigma^2 I$, so $H(y) \equiv F = (S+\sigma^2I)^{-1}$ and $C = 0$. The posterior law of $X$ given $Y$ is Gaussian, so $\Delta = 0$ and $D = 0$. Proposition~\ref{prop:decomposition} gives $R = L$ with $\bar G = \Sym\bar J$.
+\end{proof}
+
+A direct proof uses Stein's lemma, $\E[f(X)(X-m)^{\mathsf T}] = \bar J S$, together with $\tr\bar J = 0$. This step is the statistical linearization used in Gaussian filtering~\cite{sarkka2013}: for Gaussian states, the coarse-grained entropy production equals that of the flow linearized with the averaged Jacobian $\bar J$. The theorem is instantaneous: a nonlinear flow does not preserve Gaussianity, and states at later times are covered only if they are again Gaussian.
+
+Equation~\eqref{eq:gaussian} also shows what a Gaussian state needs in order to approach $\kappa$. The averaged strain $\lambda_{\max}(\Sym\bar J)$ must approach $\kappa$, so the state must be concentrated where the strain is maximal. And the Fisher matrix $F$ must be concentrated on the top eigenvector of $\Sym\bar J$, so the coarse-grained density must be sharp across the stretching direction and broad along the contracting one. Because $F \preceq \sigma^{-2}I$, the second requirement forces the state to be long, and a long state cannot stay where the strain is maximal. Section~\ref{sec:best} turns this tension into a quantitative gap.

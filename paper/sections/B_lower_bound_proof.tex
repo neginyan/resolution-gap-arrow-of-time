@@ -1,0 +1,55 @@
+\section{Proof of Theorem~\ref{thm:statewise} and a variant}
+\label{app:bound}
+
+Write $J = F$, $J_{\rm tot} = \tr F$, $f_0 = L + C$ so that $R = f_0 + D$, and use $(v,w)$ components. For the pendulum $G(y) = \bar a(y)\,\mathrm{diag}(1,-1)$.
+
+\emph{Step 1 (identity).} From $f_0 = \E\tr(HG)/\tr F$ (proof of Proposition~\ref{prop:decomposition}) and $\E H = J$,
+\begin{equation}
+J_{\rm tot}(1 - f_0) = \E[\gamma H_{vv}] - \E[\gamma H_{ww}] + 2J_{ww}, \qquad \gamma = 1 - \bar a .
+\label{eq:step1}
+\end{equation}
+
+\emph{Step 2 (positive and negative parts).} $\E[\gamma H_{vv}] = \E[\gamma\omega]/\sigma^2 - N$ with $N = \E[\gamma\,[H_{vv}]_-]$.
+
+\emph{Step 3 (strain inequality).} For all real $x$, $\cos x \leq 1 - x^2/2 + x^4/24$, so $\sin^2(x/2) \geq x^2/4 - x^4/48$. Averaging over the posterior and using $\E[\delta^2\,|\,y] = u^2/2 + \Var(X_q\,|\,y)$,
+\begin{equation}
+\gamma \geq \frac{u^2}{8} + \frac{\Var(X_q\,|\,y)}{4} - \frac{\E[\delta^4\,|\,y]}{48} .
+\end{equation}
+
+\emph{Step 4 (weighted Cram\'er--Rao).} Since $\omega \geq 0$, the Cauchy--Schwarz inequality gives $\E[\omega u^2] \geq \Gamma^2/\E[\omega s_w^2]$ with $\Gamma = -\E[\omega u s_w]$. For $\omega \equiv 1$, integration by parts gives $\Gamma = \E[\partial_w u]$ and this is the Cram\'er--Rao inequality along $w$.
+
+\emph{Step 5 (window bound).} By Eq.~\eqref{eq:Hbound}, $0 \leq \omega \leq 1$ and $J_{vv} = \E[H_{vv}] \leq \E[[H_{vv}]_+] = j/\sigma^2$, so $J_{\rm tot} \leq j/\sigma^2 + J_{ww}$.
+
+\emph{Step 6 (combination).} Steps 1--4 give $J_{\rm tot}(1 - f_0) \geq \mathcal P - \mathcal Q$ with
+\begin{align*}
+\mathcal P &= \frac{\Gamma^2}{8\sigma^2\E[\omega s_w^2]} + 2J_{ww} \geq 0, \\
+\mathcal Q &= \frac{\E\!\left[\omega\left(\tfrac{1}{48}\E[\delta^4|Y] - \tfrac14\Var(X_q|Y)\right)\right]}{\sigma^2} + N + \E[\gamma H_{ww}] .
+\end{align*}
+Divide by $J_{\rm tot}$. Because $\mathcal P \geq 0$, Step 5 gives $\mathcal P/J_{\rm tot} \geq \mathcal P/(j/\sigma^2 + J_{ww})$; the remainder is divided exactly, $\mathcal Q/J_{\rm tot} = \tilde\varepsilon$. With $\Theta'$ from Eq.~\eqref{eq:Theta} and $\zeta = \sigma^2 J_{ww}/j$,
+\begin{equation}
+1 - f_0 \geq \frac{\Theta'^2\sigma^2/(8\zeta) + 2\zeta}{1 + \zeta} - \tilde\varepsilon .
+\end{equation}
+
+\emph{Step 7 (minimization).} Let $T = \Theta'\sigma$. For $\zeta \leq T/2$, the arithmetic--geometric mean inequality gives $T^2/(8\zeta) + 2\zeta \geq T$, hence the fraction is at least $T/(1+\zeta) \geq T/(1 + T/2)$. For $\zeta > T/2$ the fraction is at least $2\zeta/(1+\zeta) \geq T/(1 + T/2)$. (The split is not optimal; the exact minimum over $\zeta$ exceeds $T/(1+T/2)$ only by $O(T^2)$.)
+
+\emph{Step 8.} $1 - R = 1 - f_0 - D$, which proves Eq.~\eqref{eq:statewise}. Only the inequalities of Steps 3, 4, 5 and 7 were used, and none of them needs a sign condition. (Dividing the whole right-hand side of Step 6 by $j/\sigma^2 + J_{ww}$ would require $\mathcal P - \mathcal Q \geq 0$; the split above avoids this.)
+
+\emph{A variant with a slowly varying weight.} The focus-slope term of Eq.~\eqref{eq:ibp} enters through $\Gamma$. It can be removed by replacing $\omega$ with a smaller weight whose variation along $w$ is limited. For $M > 0$ let $\chi$ be the largest function with $0 \leq \chi \leq \omega$ such that $\sqrt\chi$ is $(M/2)$-Lipschitz along $w$; then $|\partial_w\chi| \leq M\sqrt\chi$, and $\E[\gamma\omega] \geq \E[\gamma\chi]$ because $\gamma \geq 0$.
+
+\begin{proposition}[Slowly varying weight]
+\label{prop:smooth}
+Let $M = m\sqrt{J_{ww}}$ with $m > 0$, and define $j_\chi = \E\chi$, $\mu = j_\chi/j$ (the fraction of the focus weight that survives), $G_\chi = \E[\chi\,\partial_w u]/j_\chi$, $\pi_\chi = \Pr[\chi(Y) > 0]$, $\kappa_2 = 2 - \E[\gamma H_{ww}]/J_{ww}$ and
+\begin{equation*}
+\varepsilon_2 = \frac{1}{J_{\rm tot}}\left\{\frac{\E\!\left[\chi\left(\tfrac1{48}\E[\delta^4|Y] - \tfrac14\Var(X_q|Y)\right)\right]}{\sigma^2} + N\right\}.
+\end{equation*}
+With $\Theta_\chi = \mu\,[G_\chi]_+/(1 + m\sqrt{\pi_\chi})$ and $T = \Theta_\chi\sigma\sqrt{\kappa_2/2}$, every state of the pendulum with $\kappa_2 > 0$ satisfies
+\begin{equation}
+1 - R \geq \frac{T}{1 + T/\kappa_2} - \varepsilon_2 - D .
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+With $Z = \E[\chi u^2]$, Cauchy--Schwarz and integration by parts give $\sqrt Z\sqrt{\E[\chi s_w^2]} \geq |\E[\chi\,\partial_w u] + \E[u\,\partial_w\chi]|$, and $|\E[u\,\partial_w\chi]| \leq M\,\E[|u|\sqrt\chi] \leq M\sqrt{Z\pi_\chi}$. Since $\E[\chi s_w^2] \leq J_{ww}$, this gives $\sqrt Z \geq j_\chi[G_\chi]_+/\bigl(\sqrt{J_{ww}}\,(1 + m\sqrt{\pi_\chi})\bigr)$. Keeping $-\E[\gamma H_{ww}] + 2J_{ww} = \kappa_2J_{ww}$ in the positive part and repeating Steps 5--7 with $\kappa_2$ in place of $2$ gives the claim; in Step 7 the two regimes are separated at $\zeta = T/\kappa_2$.
+\end{proof}
+
+With $m = 1$ the variant gives at least $0.389\,\sigma$ on the $236$ stored states concentrated near the hyperbolic point, where $\mu \geq 0.814$, $G_\chi \geq 0.974$, $\kappa_2 \geq 1.967$ and $\varepsilon_2 + D \leq 0.049\,\sigma$; with these constants the bound is $0.344\,\sigma$ uniformly on that class. The lower bounds on $\mu$, $G_\chi$ and $\kappa_2$ are observed, not proved. Restricting the number or the width of the components does not imply them, because two crossing components can already make the focus vary on arbitrarily short scales.

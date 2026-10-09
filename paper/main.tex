@@ -1,0 +1,63 @@
+\documentclass[aps,pre,reprint,twocolumn,nofootinbib,superscriptaddress]{revtex4-2}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{xurl}
+\usepackage{hyperref}
+
+\hypersetup{
+    pdfauthor={Taishi Namba},
+    pdftitle={A resolution gap for the coarse-grained arrow of time in nonlinear Hamiltonian flows},
+    pdfkeywords={coarse-graining, arrow of time, Fisher information, Tweedie formula, Cramer-Rao inequality, Gaussian mixtures},
+    hidelinks
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem*{gapconjecture}{Resolution-gap conjecture}
+\newtheorem{observation}{Numerical result}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\E}{\mathbb{E}}
+
+\begin{document}
+
+\title{A resolution gap for the coarse-grained arrow of time in nonlinear Hamiltonian flows}
+
+\author{Taishi Namba}
+\email{neginyan@gmail.com}
+\affiliation{Independent Researcher, Atsugi, Kanagawa, Japan}
+
+\date{\today}
+
+\input{sections/00_abstract}
+
+\maketitle
+
+\input{sections/01_introduction}
+\input{sections/02_decomposition}
+\input{sections/03_gaussian}
+\input{sections/04_best_gaussian}
+\input{sections/05_mixtures}
+\input{sections/06_lower_bound}
+\input{sections/07_evidence}
+\input{sections/08_conclusion}
+
+\appendix
+\input{sections/A_best_gaussian_proofs}
+\input{sections/B_lower_bound_proof}
+\input{sections/C_methods}
+
+\input{sections/09_back_matter}
+
+\input{sections/10_references}
+
+\end{document}

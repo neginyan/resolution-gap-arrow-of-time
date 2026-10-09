@@ -1,0 +1,25 @@
+\section{Proofs for Section~\ref{sec:best}}
+\label{app:best}
+
+\emph{Reduction to one variable.} Let $\rho_t = \mathcal N(m,S)$ with $\varphi > 0$, so that $S_{ww} > S_{vv}$. Write $d = \sqrt{S_{ww}}$, $\alpha = \sqrt{S_{vv}}$ and $x = d - \alpha > 0$. Positive semidefiniteness gives $S_{vw} \geq -\alpha d$, hence
+\begin{equation}
+S_{qq} = \tfrac12\left(S_{vv} + 2S_{vw} + S_{ww}\right) \geq \tfrac12 x^2 ,
+\label{eq:Sqqmin}
+\end{equation}
+with equality for the zero-width segment $S_{vw} = -\alpha d$. With $y = d + \alpha$,
+\begin{equation}
+\varphi = \frac{d^2 - \alpha^2}{d^2 + \alpha^2 + 2\sigma^2} = \frac{2xy}{x^2 + y^2 + 4\sigma^2}
+\leq \frac{x}{\sqrt{x^2 + 4\sigma^2}} ,
+\label{eq:phibound}
+\end{equation}
+because, at fixed $x$, the middle expression is maximal at $y^2 = x^2 + 4\sigma^2$, which satisfies $y \geq x$. This proves Eq.~\eqref{eq:phimax}. The optimal segment has $\alpha = (y - x)/2$ and $d = (y + x)/2$; for $\sigma \ll x$, $\alpha \approx \sigma^2/x$ and the tilt angle is $\alpha/d \approx \sigma^2/x^2$.
+
+\emph{Proof of Theorem~\ref{thm:pendulum}.} For the pendulum $\lambda = \tfrac12\left(1 - \cos m_q\,e^{-S_{qq}/2}\right) \in [0,1]$, so states with $\varphi \leq 0$ have $R \leq 0$. For $\varphi > 0$, $\lambda \leq \Lambda(S_{qq})$ with $\Lambda(s) = \tfrac12(1 + e^{-s/2})$, which is decreasing; by Eqs.~\eqref{eq:Sqqmin} and~\eqref{eq:phibound},
+\begin{equation*}
+R = \lambda\varphi \leq \Lambda(x^2/2)\,\frac{x}{\sqrt{x^2 + 4\sigma^2}} = \frac{1 + e^{-x^2/4}}{2}\,\frac{x}{\sqrt{x^2 + 4\sigma^2}} .
+\end{equation*}
+Equality holds for the zero-width segment centred at $m_q = \pi$ with the optimal $y$, which proves Eq.~\eqref{eq:Rstar}. As $x \to \infty$ the right-hand side tends to $1/2$ from below; the interior maximum is at least $1/2$ exactly for $\sigma \leq \sigma_c = 0.93909\ldots$ (with equality at $\sigma_c$), obtained numerically from the stationarity condition. For the expansion, put $x^2 = u\sigma$. Then $\Lambda = 1 - u\sigma/8 + O(\sigma^2)$ and $x/\sqrt{x^2 + 4\sigma^2} = 1 - 2\sigma/u + O(\sigma^2)$, so $1 - R = \sigma\,(u/8 + 2/u) + O(\sigma^2)$, minimal at $u = 4$ with value $\sigma$. This gives the length $x \approx 2\sqrt\sigma$ and the tilt $\sigma^2/x^2 \approx \sigma/4$. Expanding the stationarity condition in powers of $\sigma$ gives $u_* = 4 - \sigma + \tfrac58\sigma^2 - \tfrac1{12}\sigma^3 + \cdots$ and, after substitution, the coefficients of Eq.~\eqref{eq:series}; they were computed with exact rational power series up to order $11$.
+
+\emph{Proof of Theorem~\ref{thm:quadratic}.} Here $\lambda = \kappa - b\left[(m_q - q_*)^2 + S_{qq}\right] \leq \kappa - bS_{qq}$. If $\lambda \leq 0$ and $\varphi \geq 0$ then $R \leq 0$. Otherwise, as above, $R \leq \left(\kappa - \tfrac12 bx^2\right)x/\sqrt{x^2 + 4\sigma^2}$, with equality for the centred zero-width segment. Put $x^2 = \sigma\nu\sqrt{\kappa/b}$. Then $\tfrac12 bx^2/\kappa = \varepsilon\nu/2$ and $x^2/(x^2 + 4\sigma^2) = \nu/(\nu + 4\varepsilon)$, so $R/\kappa = (1 - \varepsilon\nu/2)\sqrt{\nu/(\nu + 4\varepsilon)}$. Setting the logarithmic derivative with respect to $\nu$ to zero gives $\nu^2 + 6\varepsilon\nu - 4 = 0$, whose positive root is $\nu = \sqrt{4 + 9\varepsilon^2} - 3\varepsilon$.
+
+\emph{Proof of Proposition~\ref{prop:gap}.} Upper bound on the gap: take the centred zero-width segment with $x^2 = 2\sigma\sqrt{\kappa/b}$ and the optimal tilt. Its $X_q$ is Gaussian with mean $q_*$ and variance $S_{qq} = x^2/2 = O(\sigma)$. By the regularity of $a$ near $q_*$, its polynomial growth, and the vanishing of the odd central moments, $\lambda = \kappa - bS_{qq} + O(S_{qq}^2)$, while $\varphi = 1 - 2\sigma^2/x^2 + O(\sigma^2)$ by Eq.~\eqref{eq:phibound}. Hence $\kappa - R \leq \tfrac12 bx^2 + 2\kappa\sigma^2/x^2 + O(\sigma^2) = 2\sqrt{\kappa b}\,\sigma + O(\sigma^2)$, and $\sqrt{\kappa b} = \sqrt{2\beta\kappa}$. Matching lower bound under the stated condition: as in the proof of Theorem~\ref{thm:pendulum}, and because $\Lambda$ is non-increasing, $R \leq \sup_x \Lambda(x^2/2)\,x/\sqrt{x^2 + 4\sigma^2}$. Because $\sup_{s \geq s_0}\Lambda(s) < \kappa$, the maximizing $x$ tends to $0$ as $\sigma \to 0$; comparing $\kappa - \tfrac12 bx^2(1 + o(1))$ with the achievable $\kappa - O(\sigma)$ shows $x^2 = O(\sigma)$, so that $\Lambda(x^2/2) = \kappa - \tfrac12 bx^2 + O(x^4)$, and the same computation as above shows that the supremum equals $\kappa - 2\sqrt{\kappa b}\,\sigma + O(\sigma^2)$.
