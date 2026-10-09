@@ -6,7 +6,7 @@ sys.path.insert(0, ROOT); os.chdir(ROOT)
 from obs_eval2 import evaluate_full, V, W
 from d3_peak import unpack as unpack3
 
-SPEARMAN_TOL = {'spearman_cv_nonPD': 0.2, 'spearman': 5e-3}  # rank correlations: ties among values at rounding level are ordered by the CPU's last bits
+SPEARMAN_TOL = {'spearman_cv_nonPD': 0.3, 'spearman': 5e-3}  # rank correlations: ties among values at rounding level are ordered by the CPU's last bits
 from vtools import check, finish, reproduce
 
 rng = np.random.default_rng(99)

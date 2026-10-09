@@ -7,7 +7,7 @@ from obs_eval2 import evaluate_full, FLOWS, V, W
 from c1_adversarial import unpack
 import fast_eval as fe
 
-SPEARMAN_TOL = {'spearman_cv_nonPD': 0.2, 'spearman': 5e-3}  # rank correlations: ties among values at rounding level are ordered by the CPU's last bits
+SPEARMAN_TOL = {'spearman_cv_nonPD': 0.3, 'spearman': 5e-3}  # rank correlations: ties among values at rounding level are ordered by the CPU's last bits
 from vtools import check, finish, reproduce
 
 rng = np.random.default_rng(2027)

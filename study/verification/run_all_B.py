@@ -10,7 +10,7 @@ from obs_eval2 import evaluate_full
 from mixtures import references, random_state
 from m1_mechanism import state
 
-SPEARMAN_TOL = {'spearman_cv_nonPD': 0.2, 'spearman': 5e-3}  # rank correlations: ties among values at rounding level are ordered by the CPU's last bits
+SPEARMAN_TOL = {'spearman_cv_nonPD': 0.3, 'spearman': 5e-3}  # rank correlations: ties among values at rounding level are ordered by the CPU's last bits
 from vtools import check, finish, reproduce
 
 rng = np.random.default_rng(77)

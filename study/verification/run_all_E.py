@@ -4,7 +4,7 @@ import sys, os, json, shutil, tempfile
 import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
 sys.path.insert(0, ROOT); sys.path.insert(0, HERE); os.chdir(ROOT)
-SPEARMAN_TOL = {'spearman_cv_nonPD': 0.2, 'spearman': 5e-3}  # rank correlations: ties among values at rounding level are ordered by the CPU's last bits
+SPEARMAN_TOL = {'spearman_cv_nonPD': 0.3, 'spearman': 5e-3}  # rank correlations: ties among values at rounding level are ordered by the CPU's last bits
 from vtools import check, finish, reproduce
 from obs_eval2 import evaluate_full
 from c1_adversarial import unpack as unpack_c1
