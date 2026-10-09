@@ -5,7 +5,8 @@
 
 Code, results and verification for the paper
 
-> T. Namba, *A resolution gap for the coarse-grained arrow of time in nonlinear Hamiltonian flows*, preprint (2026).
+> T. Namba, *A resolution gap for the coarse-grained arrow of time in nonlinear Hamiltonian flows*, preprint (2026),
+> [doi:10.5281/zenodo.23252860](https://doi.org/10.5281/zenodo.23252860).
 
 The paper continues
 T. Namba, *Sharp criterion for the coarse-grained arrow of time in Hamiltonian dynamics*, preprint v1.1.1, Zenodo (2026),
@@ -87,12 +88,27 @@ checked by the scripts in this repository.
 
 ## How to cite
 
-Please cite the paper and the archived version of this code:
+Please cite the paper,
+
+> T. Namba, *A resolution gap for the coarse-grained arrow of time in nonlinear Hamiltonian flows*, preprint (2026),
+> [doi:10.5281/zenodo.23252860](https://doi.org/10.5281/zenodo.23252860),
+
+and the archived version of this code:
 
 > T. Namba, *resolution-gap-arrow-of-time: code and verification for "A resolution gap for the coarse-grained arrow of time in nonlinear Hamiltonian flows"*, version v1.0.0, Zenodo (2026),
 > [doi:10.5281/zenodo.23252672](https://doi.org/10.5281/zenodo.23252672).
 
 ```bibtex
+@misc{namba2026resolutiongap,
+  author    = {Namba, Taishi},
+  title     = {A resolution gap for the coarse-grained arrow of time
+               in nonlinear Hamiltonian flows},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.23252860},
+  note      = {Preprint}
+}
+
 @software{namba2026resolutiongapcode,
   author    = {Namba, Taishi},
   title     = {resolution-gap-arrow-of-time: code and verification for
