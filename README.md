@@ -1,5 +1,6 @@
 # resolution-gap-arrow-of-time
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23252672.svg)](https://doi.org/10.5281/zenodo.23252672)
 [![verify](https://github.com/neginyan/resolution-gap-arrow-of-time/actions/workflows/verify.yml/badge.svg)](https://github.com/neginyan/resolution-gap-arrow-of-time/actions/workflows/verify.yml)
 
 Code, results and verification for the paper
@@ -83,6 +84,27 @@ The study and the verification used Python 3.13.16 with numpy 2.5.3, scipy 1.18.
 This work was carried out with the help of AI assistants: Google Gemini (Gemini 3.8 Flash) and Anthropic Claude.
 Their roles are described in the acknowledgments of the paper. Every analytical statement, number and figure is
 checked by the scripts in this repository.
+
+## How to cite
+
+Please cite the paper and the archived version of this code:
+
+> T. Namba, *resolution-gap-arrow-of-time: code and verification for "A resolution gap for the coarse-grained arrow of time in nonlinear Hamiltonian flows"*, version v1.0.0, Zenodo (2026),
+> [doi:10.5281/zenodo.23252672](https://doi.org/10.5281/zenodo.23252672).
+
+```bibtex
+@software{namba2026resolutiongapcode,
+  author    = {Namba, Taishi},
+  title     = {resolution-gap-arrow-of-time: code and verification for
+               ``A resolution gap for the coarse-grained arrow of time
+               in nonlinear Hamiltonian flows''},
+  version   = {v1.0.0},
+  publisher = {Zenodo},
+  year      = {2026},
+  doi       = {10.5281/zenodo.23252672},
+  url       = {https://doi.org/10.5281/zenodo.23252672}
+}
+```
 
 ## License
 
