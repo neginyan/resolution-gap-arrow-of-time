@@ -114,7 +114,7 @@ check('twist, curved needle: (kappa - R)/sigma = 0.51 (prediction 1/2 for a need
       f"(gap/sigma {b5['gap_over_sigma_n48']:.4f}; g* {b5['gstar_n48']:.4f}, at 1e-4 {b5['gstar_n48_sigma0.0001']:.4f})")
 from i5_arc import gval
 g5, r5 = gval(np.array(b5['x']), 48, gh=6, per_sd=10)
-check('twist, curved needle: re-evaluated from its parameters', abs(g5 - b5['gstar_n48']) < 1e-10, f'(g* {g5:.6f})')
+check('twist, curved needle: re-evaluated from its parameters (to 1e-8; the quadrature itself is accurate to ~5e-8)', abs(g5 - b5['gstar_n48']) < 1e-8, f'(g* {g5:.6f}, diff {abs(g5 - b5["gstar_n48"]):.1e})', value=abs(g5 - b5['gstar_n48']), tol=1e-8)
 from i5_arc import arc
 ws, mus, Ss = arc(np.array(b5['x']), 16, sig=1e-2); rb = ns['R_brute'](ws, mus, Ss, 1e-2, ny=101); rg = fields(ws, mus, Ss, 1e-2, kind='twist', per_sd=10, gh=6)['R']
 check('twist, curved needle (16 segments, sigma = 1e-2): direct summation over prior nodes agrees (its accuracy is ~5e-8)', abs(rb - rg) < 1e-7, f'(R {rg:.9f} vs {rb:.9f})', value=abs(rb - rg), tol=1e-7)
@@ -122,6 +122,6 @@ I4 = L('i4_twist')
 check('twist, components added one by one: (kappa - R)/sigma decreases towards the bent-needle value, never below 0.49; R < kappa',
       all(r['scale'][1]['gap_over_sigma'] > 0.49 and r['scale'][1]['R'] < 0.25 for c in I4 for r in c['chain']),
       f"({[[round(r['scale'][1]['gap_over_sigma'], 3) for r in c['chain']] for c in I4]})")
-ok, d, where, _ = reproduce('results/summary_I.json', 'i_analyze.py', loose={'/x': 1e-6, 'coefficient_sigma0': 1e-6})
-check('summary_I.json reproducible (relative 1e-9; extrapolated coefficients 1e-6; stored file restored)', ok, f'(max rel dev {d:.1e} at {where})')
+ok, d, where, _ = reproduce('results/summary_I.json', 'i_analyze.py', loose={'/x': 1e-6, 'coefficient_sigma0': 1e-6, '/beta/': 1e-6, 'predicted_gap_coefficient': 1e-6})
+check('summary_I.json reproducible (relative 1e-9; extrapolated coefficients, fitted beta and the coefficient predicted from it 1e-6; stored file restored)', ok, f'(max rel dev {d:.1e} at {where})')
 finish()
