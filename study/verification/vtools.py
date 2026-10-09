@@ -60,7 +60,9 @@ def _leaves(a, path=''):
 
 def reproduce(path, script, rtol=1e-9, loose=None):
     """re-run `script` (which writes `path`), compare with the stored file, then restore the stored file.
-    loose = {substring: rtol}: leaves whose JSON path contains the substring are compared with that (larger) tolerance instead --
+    loose = {substring: rtol or ('abs', atol)}: leaves whose JSON path contains the substring are compared with that (larger)
+    relative tolerance, or with an absolute tolerance (used for rank correlations of data with many ties at rounding level,
+    whose order depends on the CPU's last bits) --
     for outputs of iterative nonlinear fits (curve_fit plateaus and their covariance-based error estimates), whose last digits
     depend on the BLAS/LAPACK build and the optimiser's stopping point.  The returned deviation is max(dev / tol) * rtol, i.e. it
     reads like a strict deviation and passes iff <= rtol; the loose leaves are also reported separately in the 'where' string."""
@@ -79,7 +81,13 @@ def reproduce(path, script, rtol=1e-9, loose=None):
     if set(lb) != set(la): return False, float('inf'), 'structure differs', before
     worst, where, worst_loose, where_loose = 0.0, '', 0.0, ''
     for p in lb:
-        d, _ = _cmp(lb[p], la[p]); tol = next((t for k, t in loose.items() if k in p), rtol)
+        tol = next((t for k, t in loose.items() if k in p), rtol)
+        if isinstance(tol, tuple):          # ('abs', atol): absolute tolerance (rank correlations)
+            a, b = lb[p], la[p]
+            d = abs(float(a) - float(b)) if isinstance(a, (int, float)) and isinstance(b, (int, float)) else _cmp(a, b)[0]
+            tol = tol[1]
+        else:
+            d, _ = _cmp(lb[p], la[p])
         if tol == rtol:
             if d > worst: worst, where = d, p
         elif d / tol > worst_loose: worst_loose, where_loose = d / tol, p

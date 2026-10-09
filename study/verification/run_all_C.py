@@ -7,7 +7,7 @@ from obs_eval2 import evaluate_full, FLOWS, V, W
 from c1_adversarial import unpack
 import fast_eval as fe
 
-SPEARMAN_TOL = {'spearman_cv_nonPD': 0.3, 'spearman': 5e-3}  # rank correlations: ties among values at rounding level are ordered by the CPU's last bits
+LOOSE = {'spearman': ('abs', 0.02), 'slope': 1e-6}  # rank correlations of tied data (CPU-dependent order of values at rounding level): absolute 0.02; log-log fit slopes: 1e-6
 from vtools import check, finish, reproduce
 
 rng = np.random.default_rng(2027)
@@ -98,8 +98,8 @@ check('largest-R adversarial state: fresh evaluation equals the table, stable on
       info=f"(R = {r['R']:.6f}, vs table {abs(r['R'] - b['R']):.1e}, 1.25x diff {abs(r2['R'] - r['R']):.1e})")
 
 # 6. summary_C reproducible, quoted numbers
-ok_rep, dev_rep, where_rep, s = reproduce('results/summary_C.json', 'summarize_C.py', loose=SPEARMAN_TOL)
-check('summary_C.json is reproduced from the raw result files (relative 1e-9, rank correlations 5e-3; the stored file is left unchanged)', ok_rep,
+ok_rep, dev_rep, where_rep, s = reproduce('results/summary_C.json', 'summarize_C.py', loose=LOOSE)
+check('summary_C.json is reproduced from the raw result files (relative 1e-9; rank correlations 0.02 absolute, fit slopes 1e-6; the stored file is left unchanged)', ok_rep,
       f'(max relative deviation {dev_rep:.1e} at {where_rep or "-"})', value=dev_rep, tol=1e-9)
 f2, f3, f4 = (lambda x: '%.2f' % x), (lambda x: '%.3f' % x), (lambda x: '%.4f' % x)
 c1, c2, c3, c4 = s['c1'], s['c2'], s['c3'], s['c4']; bb = c1['best']

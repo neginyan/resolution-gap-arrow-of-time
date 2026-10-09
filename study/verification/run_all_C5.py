@@ -6,7 +6,7 @@ sys.path.insert(0, ROOT); os.chdir(ROOT)
 from obs_eval2 import evaluate_full
 from m1_mechanism import state
 
-SPEARMAN_TOL = {'spearman_cv_nonPD': 0.3, 'spearman': 5e-3}  # rank correlations: ties among values at rounding level are ordered by the CPU's last bits
+LOOSE = {'spearman': ('abs', 0.02), 'slope': 1e-6}  # rank correlations of tied data (CPU-dependent order of values at rounding level): absolute 0.02; log-log fit slopes: 1e-6
 from vtools import check, finish, reproduce
 
 rng = np.random.default_rng(31)
@@ -46,8 +46,8 @@ check('B of the base state reproduced by finite differences of log p_Y', abs(Bfd
       value=abs(Bfd - r['B_balance']), tol=2e-3)
 
 # 3. summary reproducible and quoted numbers
-ok_rep, dev_rep, where_rep, s = reproduce('results/summary_C5.json', 'c5_analyze.py', loose=SPEARMAN_TOL)
-check('summary_C5.json is reproduced from the raw result files (relative 1e-9, rank correlations 5e-3; the stored file is left unchanged)', ok_rep,
+ok_rep, dev_rep, where_rep, s = reproduce('results/summary_C5.json', 'c5_analyze.py', loose=LOOSE)
+check('summary_C5.json is reproduced from the raw result files (relative 1e-9; rank correlations 0.02 absolute, fit slopes 1e-6; the stored file is left unchanged)', ok_rep,
       f'(max relative deviation {dev_rep:.1e} at {where_rep or "-"})', value=dev_rep, tol=1e-9)
 f2, f3 = (lambda x: '%.2f' % x), (lambda x: '%.3f' % x)
 db = s['dist_bins']

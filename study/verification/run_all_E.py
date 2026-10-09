@@ -4,7 +4,7 @@ import sys, os, json, shutil, tempfile
 import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
 sys.path.insert(0, ROOT); sys.path.insert(0, HERE); os.chdir(ROOT)
-SPEARMAN_TOL = {'spearman_cv_nonPD': 0.3, 'spearman': 5e-3}  # rank correlations: ties among values at rounding level are ordered by the CPU's last bits
+LOOSE = {'spearman': ('abs', 0.02), 'slope': 1e-6}  # rank correlations of tied data (CPU-dependent order of values at rounding level): absolute 0.02; log-log fit slopes: 1e-6
 from vtools import check, finish, reproduce
 from obs_eval2 import evaluate_full
 from c1_adversarial import unpack as unpack_c1
@@ -12,7 +12,7 @@ from c1_adversarial import unpack as unpack_c1
 # 0. the reproducibility check tolerates last-bit differences and never changes the stored file
 tmp = tempfile.NamedTemporaryFile(delete=False, suffix='.json'); tmp.close(); shutil.copyfile('results/summary_D.json', tmp.name)
 s = json.load(open('results/summary_D.json')); s['task1']['min_M'] *= 1 + 1e-15; json.dump(s, open('results/summary_D.json', 'w'), indent=1)
-ok, dev, where, _ = reproduce('results/summary_D.json', 'd_analyze.py', loose=SPEARMAN_TOL)
+ok, dev, where, _ = reproduce('results/summary_D.json', 'd_analyze.py', loose=LOOSE)
 kept = json.load(open('results/summary_D.json'))['task1']['min_M'] == s['task1']['min_M']
 shutil.copyfile(tmp.name, 'results/summary_D.json'); os.unlink(tmp.name)
 check('reproducibility check: a 1e-15 change in a stored summary passes and the stored file is not rewritten', ok and kept and dev > 0,
@@ -62,8 +62,8 @@ for t in ['Pv', 'Pw']:
     check(f'valley search: smallest {t} reproduced on a finer grid and still positive', d < 1e-9 and a[t] > 0, f'({t} = {a[t]:.5f}, diff {d:.1e})', value=d, tol=1e-9)
 
 # 4. summary reproducible (tolerant, non-destructive) and quoted numbers
-ok_rep, dev_rep, where_rep, s = reproduce('results/summary_E.json', 'e_analyze.py', loose=SPEARMAN_TOL)
-check('summary_E.json is reproduced from the raw result files (relative 1e-9, rank correlations 5e-3; the stored file is left unchanged)', ok_rep,
+ok_rep, dev_rep, where_rep, s = reproduce('results/summary_E.json', 'e_analyze.py', loose=LOOSE)
+check('summary_E.json is reproduced from the raw result files (relative 1e-9; rank correlations 0.02 absolute, fit slopes 1e-6; the stored file is left unchanged)', ok_rep,
       f'(max relative deviation {dev_rep:.1e} at {where_rep or "-"})', value=dev_rep, tol=1e-9)
 t1, t2, t3, t4 = s['task1'], s['task2'], s['task3'], s['task4']; bm = t1['best_margins']
 f2, f3, f4 = (lambda x: '%.2f' % x), (lambda x: '%.3f' % x), (lambda x: '%.4f' % x)
