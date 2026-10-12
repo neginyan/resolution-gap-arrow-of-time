@@ -5,8 +5,8 @@
 
 Code, results and verification for the paper
 
-> T. Namba, *A resolution gap for the coarse-grained arrow of time in nonlinear Hamiltonian flows*, preprint (2026),
-> [doi:10.5281/zenodo.23252860](https://doi.org/10.5281/zenodo.23252860).
+> T. Namba, *A resolution gap for the coarse-grained arrow of time in nonlinear Hamiltonian flows*, preprint v1.1 (2026),
+> [doi:10.5281/zenodo.23320603](https://doi.org/10.5281/zenodo.23320603).
 
 The paper continues
 T. Namba, *Sharp criterion for the coarse-grained arrow of time in Hamiltonian dynamics*, preprint v1.2, Zenodo (2026),
@@ -91,8 +91,8 @@ checked by the scripts in this repository.
 
 Please cite the paper,
 
-> T. Namba, *A resolution gap for the coarse-grained arrow of time in nonlinear Hamiltonian flows*, preprint (2026),
-> [doi:10.5281/zenodo.23252860](https://doi.org/10.5281/zenodo.23252860),
+> T. Namba, *A resolution gap for the coarse-grained arrow of time in nonlinear Hamiltonian flows*, preprint v1.1 (2026),
+> [doi:10.5281/zenodo.23320603](https://doi.org/10.5281/zenodo.23320603),
 
 and the archived version of this code:
 
@@ -106,7 +106,8 @@ and the archived version of this code:
                in nonlinear Hamiltonian flows},
   year      = {2026},
   publisher = {Zenodo},
-  doi       = {10.5281/zenodo.23252860},
+  doi       = {10.5281/zenodo.23320603},
+  version   = {v1.1},
   note      = {Preprint}
 }
 

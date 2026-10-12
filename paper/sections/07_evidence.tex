@@ -9,19 +9,19 @@ The results above prove the conjecture of Ref.~\cite{namba2026arrow} for Gaussia
 
 \emph{States that use almost all of the room.} The fraction of room used can be pushed towards $1$, but only from below and only through a ruler effect: a needle at $q = \pi$ that carries a small part of the weight but almost all of the Fisher information sets $R$, while a broad component far from the maximum enlarges the distance $\kappa - L$. Along a sequence of shrinking needles we observed that $R$ stays below the critical rate of the needle alone, which is below its strain and below $1$ by Theorem~\ref{thm:gaussian}.
 
-\emph{Gap.} For $\sigma \leq 10^{-2}$ every stored pendulum state has $(1-R)/\sigma \geq 0.946$; the smallest values belong to the fans of Sec.~\ref{sec:mixtures}, whose advantage over the best Gaussian state saturates at about $5\%$ of the Gaussian gap. In the other flows the gap is also proportional to $\sigma$ (Fig.~\ref{fig:flows}).
+\emph{Gap.} For $\sigma \leq 10^{-2}$ every one of the $268$ states of Secs.~\ref{sec:mixtures}--\ref{sec:bound} has $(1-R)/\sigma \geq 0.946$; among them the smallest values belong to the fans of Sec.~\ref{sec:mixtures}, whose advantage over the best Gaussian state saturates at about $5\%$ of the Gaussian gap. A later direct minimization of $(1-R)/\sigma$ over free mixtures, by random search followed by gradient descent, went further: $(1-R)/\sigma = 0.9163$ at $\sigma = 10^{-2}$ ($16$ components) and $0.9179$ at $\sigma = 10^{-3}$ ($24$ components), about $8\%$ of the Gaussian gap. These states are irregular bundles of thin needles near the hyperbolic point, combining a fan with short chains. Their values were reproduced by the Gauss--Hermite and direct-summation evaluators of Appendix~\ref{app:methods} and, independently, by transporting quadrature nodes with the exact flow and differentiating the coarse-grained entropy in time ($0.916316$ and $0.917965$). Relative to the best Gaussian state, $(1-R)/(1-R^*)$ is the same at both resolutions to $0.002$, so the gap remains proportional to $\sigma$. The search had not converged; the decrease per refinement fell from $0.008$ to $0.0015$. In the other flows the gap is also proportional to $\sigma$ (Fig.~\ref{fig:flows}).
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.95\textwidth]{figures/fig4_flows.png}
-\caption{Resolution gap in four flows. (1) Best Gaussian state: $(\kappa - R^*)/\sigma$ against $\sigma$; triangles mark the prediction $2\sqrt{2\beta\kappa}$ of Proposition~\ref{prop:gap}. (2) Advantage $g^*$ of mixtures near the maximal strain. (3) Twist flow: gap of mixtures with $K$ components, of a bent needle, of the best straight Gaussian state ($\sqrt3/2$) and the prediction $1/2$ for a needle that follows the rotation.}
+\caption{Resolution gap in four flows. (1) Best Gaussian state: $(\kappa - R^*)/\sigma$ against $\sigma$; triangles mark the prediction $2\sqrt{2\beta\kappa}$ of Proposition~\ref{prop:gap}. (2) Advantage $g^*$ of mixtures near the maximal strain. (3) Twist flow: gap of mixtures with $K$ components, of a chain of $48$ straight needles along an arc, of the best straight Gaussian state ($\sqrt3/2$) and the value $1/2$ suggested for a needle that follows the rotation (Numerical result~\ref{obs:bent}).}
 \label{fig:flows}
 \end{figure*}
 
 These observations suggest a sharpened form of the conjecture.
 
 \begin{gapconjecture}
-For the pendulum there are constants $c > 0$ and $\sigma_0 > 0$ such that every state satisfies $\kappa - R \geq c\,\sigma$ for $\sigma \leq \sigma_0$. Numerically, the best constant is close to $0.95$.
+For the pendulum there are constants $c > 0$ and $\sigma_0 > 0$ such that every state satisfies $\kappa - R \geq c\,\sigma$ for $\sigma \leq \sigma_0$. Numerically, the best constant is at most $0.916$, the smallest gap found, and the searches suggest a value near $0.91$.
 \end{gapconjecture}
 
 The resolution-gap conjecture implies Conjecture~1 of Ref.~\cite{namba2026arrow} for the pendulum at small resolution, with a margin. By Theorem~\ref{thm:statewise} it would follow from a lower bound on $\Theta'$ that holds uniformly over states, together with $\tilde\varepsilon + D = o(\sigma)$. We expect the same structure, a gap $c_f\,\sigma$ with $c_f$ set by the curvature of the strain at its maximum after any rotation of the stretching direction has been followed, for other Hamiltonian flows with finite $\kappa$.
