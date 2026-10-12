@@ -83,9 +83,9 @@ def grid(ws, mus, Ss, sig, frame=RVW, pad=8.0, per_sd=8, min_axis=161, max_point
     return Y, h[0] * h[1], tuple(n)
 
 
-def fields(ws, mus, Ss, sig, kind='pendulum', frame=RVW, per_sd=8, gh=None, need_H=False, chunk=200_000):
+def fields(ws, mus, Ss, sig, kind='pendulum', frame=RVW, per_sd=8, gh=None, need_H=False, chunk=200_000, min_axis=161):
     """R and (optionally) the fields of the lower-bound chain on the grid.  Returns dict."""
-    Y, dA, n = grid(ws, mus, Ss, sig, frame, per_sd=per_sd)
+    Y, dA, n = grid(ws, mus, Ss, sig, frame, per_sd=per_sd, min_axis=min_axis)
     s2 = sig * sig; K = len(ws)
     if gh is not None or kind == 'twist': chunk = min(chunk, max(5000, int(4e6 / (gh or 16) ** 2)))   # Gauss-Hermite: bound the memory
     T = [S + s2 * np.eye(2) for S in Ss]; Ti = [np.linalg.inv(t) for t in T]; lg = [np.log(w) - 0.5 * np.log(np.linalg.det(t)) - np.log(2 * np.pi) for w, t in zip(ws, T)]

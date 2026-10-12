@@ -1,4 +1,4 @@
-"""Run the verification scripts of all stages (A-K) and report the total.
+"""Run the verification scripts of all stages (A-L) and report the total.
 
 Each stage script re-derives every number it reports from the stored raw results and checks the
 identities and inequalities used in the paper. Exit code 0 iff every check of every stage passes.
@@ -8,7 +8,7 @@ import os, re, subprocess, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__))
 STAGES = [('A', 'run_all.py'), ('B', 'run_all_B.py'), ('C', 'run_all_C.py'), ('C+', 'run_all_C5.py'),
           ('D', 'run_all_D.py'), ('E', 'run_all_E.py'), ('F', 'run_all_F.py'), ('G', 'run_all_G.py'),
-          ('H', 'run_all_H.py'), ('I', 'run_all_I.py'), ('J', 'run_all_J.py'), ('K', 'run_all_K.py')]
+          ('H', 'run_all_H.py'), ('I', 'run_all_I.py'), ('J', 'run_all_J.py'), ('K', 'run_all_K.py'), ('L', 'run_all_L.py')]
 
 total = passed = 0
 failed_stages = []

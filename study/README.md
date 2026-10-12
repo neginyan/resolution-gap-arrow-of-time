@@ -99,6 +99,20 @@ R = −Σ/(σ² tr F). Flow: pendulum f = (p, −sin q), κ = 1.
   T = Θ_χ σ √(κ₂/2), Θ_χ = α G_χ/(1 + λ√P_χ). Conditional uniform bound in terms of α, G_χ, κ₂, ε₂; on the 236 near-top states
   c = 0.344 (λ = 1), state-wise ≥ 0.389σ. No unconditional c for K ≥ 2 (K = 1: 1 − R ≥ 1 − R*(σ) exactly).
 
+## Stage L (first step towards paper C)
+- Adversarial minimisation of (1 − R)/σ (pendulum): free mixtures polished by L-BFGS reach **0.9163σ** (σ = 10⁻², K = 16) and
+  **0.9179σ** (σ = 10⁻³, K = 24), below the 0.946σ of stages H–K; fans (also extended / shifted) stay at 0.943–0.951. Scale invariant
+  ((1 − R)/(1 − R*) within 0.0016 between σ = 10⁻³ and 10⁻²); three independent evaluators agree. Search not converged; inf ≈ 0.91 (estimate).
+- Focus-slope ratios: none is uniformly bounded (ρ = 90 for a 2-component state with gap 1105σ); on near-optimal states ρ ≤ 0.275,
+  giving a conditional c ≈ 0.68. Θ′ ≥ geo(1 − ρ) (proved). Fan profile (estimate): weight ∝ sech²(α/0.43), length ∝ exp(0.32α²).
+- Coupled pendulums (4-d): law 1 checked against 4-d Gauss–Hermite and Monte Carlo; κ = (1 + ε + √(1 + ε²))/2 at (π, 0); best Gaussian
+  gap coefficient = 2 tr[(B^½ C B^½)^½], C = diag(2κ, κ) (leading-order formula; matches the optimum to 6 digits for ε = 0.1, 0.3 and,
+  out of sample, ε = 1); momentum-only directions are free, so the coefficient grows with the coupling (≈ 1 + √ε), not with the dimension.
+- Twist flow: fans of bent needles (12 straight pieces each) reach 0.4894σ. Correction to stage I: a bent needle built from n straight
+  pieces gives 0.503 (n = 24), 0.509 (48) … 0.569 (384) — the agreement of 0.509 with the prediction 1/2 is not established for a smooth
+  curved needle (confirmed by direct kernel summation).
+- notes/L4_拡散モデル計画書.md: design (no implementation) of a phase-space diffusion-model demonstration.
+
 ## Files
 | file | role |
 |---|---|
@@ -159,6 +173,14 @@ R = −Σ/(σ² tr F). Flow: pendulum f = (p, −sin q), κ = 1.
 | verification/run_all_J.py | stage J: 14 checks (all pass) |
 | j2_smooth.py, k_analyze.py | stage K: smoothed focus weight; summary_K.json, figures/stageK_smooth.png |
 | verification/run_all_K.py | stage K: 15 checks (all pass) |
+| l_tools.py | stage L: diagnostics (Θ′, ε̃, D, ρ, the focus-slope ratios) |
+| l1_free.py, l1_polish.py, l1_fan_ext.py, l1_post.py | stage L, L1(a): adversarial searches and final diagnostics |
+| l1_rho_max.py, l1_ratios.py, l1_profile.py | stage L, L1(b)(c): ratio maximisation, ratio survey, fan profile fits |
+| l2_bentfan.py, l2_check.py, l2_arc_continuum.py | stage L, L2: bent fans (twist flow), checks, n-dependence of the bent needle |
+| l3_coupled.py | stage L, L3: coupled pendulums (4-d), law 1 check, best Gaussian, gap-coefficient formula |
+| l_analyze.py | results/summary_L.json, figures/stageL_*.png |
+| verification/run_all_L.py | stage L: 55 checks (all pass) |
+| notes/本筋用要約_観測L.md, notes/L4_拡散モデル計画書.md | stage-L summary and the L4 plan (Japanese) |
 | notes/本筋用要約_観測A.md … _K.md | stage summaries as written during the study (Japanese) |
 | logs/ | console logs of the runs |
 
@@ -187,7 +209,14 @@ python i1_fan.py 1500; python i2_bound.py 1; python i3_flows.py single; python i
 python i4_twist.py 400; python i5_arc.py; python i_analyze.py; python verification/run_all_I.py
 python j1_weighted_cr.py 2; python j_analyze.py; python verification/run_all_J.py
 python j2_smooth.py 2; python k_analyze.py; python verification/run_all_K.py
+python l3_coupled.py check; python l3_coupled.py single; python l3_coupled.py eps1
+python l1_free.py 2500; python l1_free.py cont 5000; python l1_polish.py 200; python l1_fan_ext.py opt 400; python l1_fan_ext.py scan
+python l1_rho_max.py 400 1; python l1_ratios.py 1; python l1_post.py; python l1_profile.py
+python l2_bentfan.py; python l2_check.py; python l2_arc_continuum.py
+python -c "import l2_arc_continuum as m; m.more((384,)); m.brute()"; python l_analyze.py; python verification/run_all_L.py
 ```
+(stage L: l1_polish.py ran to K = 24 for σ = 10⁻³ and K = 16 for σ = 10⁻² before the machine restarted; l1_rho_max.py was stopped
+after K = 2. The searches are random and long; reruns give other (similar) states.)
 (i1_fan.py: in stage I the 4th start, a random one, was stopped after ~7 h; results/i1_fan.json holds the other three.)
 (python h2_brute.py writes results/h2_brute.json, the direct-summation checks of the σ = 0.1, 0.3 violations;
 results/h2_probe.json is the first violating state found by a short probe search.)

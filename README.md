@@ -9,8 +9,8 @@ Code, results and verification for the paper
 > [doi:10.5281/zenodo.23252860](https://doi.org/10.5281/zenodo.23252860).
 
 The paper continues
-T. Namba, *Sharp criterion for the coarse-grained arrow of time in Hamiltonian dynamics*, preprint v1.1.1, Zenodo (2026),
-[doi:10.5281/zenodo.23163727](https://doi.org/10.5281/zenodo.23163727).
+T. Namba, *Sharp criterion for the coarse-grained arrow of time in Hamiltonian dynamics*, preprint v1.2, Zenodo (2026),
+[doi:10.5281/zenodo.23258135](https://doi.org/10.5281/zenodo.23258135).
 
 ## Question
 
@@ -32,7 +32,8 @@ This study asks how close a state can bring R to κ when the flow is nonlinear.
   attained by a slightly tilted segment of length ≈ 2√σ. Quadratic strain has a closed form, and
   near a non-degenerate maximum κ − R\* = 2√(2βκ) σ + O(σ²): the *resolution gap*.
 - **Mixtures beat the best Gaussian state.** Fans of thin segments crossing at the hyperbolic point
-  exceed R\* by up to 5 % of the gap, but the gap stays proportional to σ (smallest observed 0.946σ).
+  exceed R\* by up to 5 % of the gap, and irregular bundles of needles found by direct optimisation by about 8 %;
+  the gap stays proportional to σ (smallest observed 0.916σ).
   Gaussian states are therefore not extremal.
 - **State-wise lower bound (pendulum).** 1 − R ≥ Θ′σ/(1 + Θ′σ/2) − ε̃ − D for every state, from a
   weighted Cramér–Rao inequality along the contracting direction; at least 0.898σ on all stored states
@@ -44,7 +45,7 @@ This study asks how close a state can bring R to κ when the flow is nonlinear.
 | path | contents |
 |---|---|
 | `paper/` | LaTeX source (`main.tex`, `sections/`, `figures/`) and the compiled PDF |
-| `study/` | numerical study, stages A–K: scripts, raw results (`results/`), logs, figures, stage summaries |
+| `study/` | numerical study, stages A–L (stage L: worst states, coupled pendulums, twist-flow chains): scripts, raw results (`results/`), logs, figures, stage summaries |
 | `study/verification/` | verification suite: one script per stage and `run_all_stages.py` |
 | `independent_checks/` | checks written separately from the study code (entropy by finite differences, best Gaussian state) |
 
@@ -65,7 +66,7 @@ This study asks how close a state can bring R to κ when the flow is nonlinear.
 ```bash
 pip install -r requirements.txt
 cd study
-python verification/run_all_stages.py     # 281 checks
+python verification/run_all_stages.py     # 336 checks (stages A–L)
 ```
 
 Each stage script re-derives every number it reports from the stored raw results and checks the identities and

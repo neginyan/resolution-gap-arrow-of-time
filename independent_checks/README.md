@@ -27,3 +27,15 @@ entropy; then R = −Σ/(σ² tr F).
 |---|---|---|
 | `rstar.py` | R\*(σ) by direct optimisation of R = λφ over all Gaussian states (four parameters) | `python rstar.py` |
 | `rstar_check.py` | R\*(σ) over zero-width segments against the series of Theorem 5 and the closed form of Theorem 6; the leading coefficient 2√(2βκ) for the pendulum, the double well and the quartic oscillator | `python rstar_check.py` |
+
+## Stage L and version 1.1 of the paper
+
+| script | what it checks | usage |
+|---|---|---|
+| `export_worst_L.py` | writes `worst_states_L.json`, the worst pendulum states of stage L as plain Gaussian mixtures (uses only the parametrisation of the study code) | `python export_worst_L.py ../study` |
+| `pend_direct.py` | (1 − R)/σ of such a state without any identity of the paper: quadrature nodes of each component transported by the exact pendulum flow (RK4), blurred with the exact Gaussian kernel, entropy on a grid, Σ by a central time difference | `python pend_direct.py worst_states_L.json index nodes_per_sigma grid_points_per_sigma dt` |
+| `l3_inf.py` | coupled pendulums: best Gaussian state by direct optimisation (one momentum direction infinitely broad, exact limit) against the formula 2 tr[(B^½ C B^½)^½] | `python l3_inf.py eps sigma n_starts` |
+
+Results: σ = 10⁻² (K = 16): 0.916316 (`pend_direct.py … 0 3 2.5 2e-4`; 0.916316 at `0 5 4 1e-4`) against 0.916309 in the study;
+σ = 10⁻³ (K = 24): 0.917965 (`… 2 3 2.5 2e-5`) against 0.917925. Coupled pendulums at σ = 10⁻⁶: 1.402608, 1.847489, 3.253805 for
+ε = 0.1, 0.3, 1 against the formula 1.402514, 1.847477, 3.253790 (the direct optimum approaches the formula from above).

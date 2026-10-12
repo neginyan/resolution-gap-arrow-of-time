@@ -30,8 +30,8 @@ from i2_bound import states
 LAMBDAS = [0.25, 0.5, 1.0, 2.0, 4.0, 8.0]
 
 
-def arrays(ws, mus, Ss, sig, per_sd=6):
-    Y, dA, n = grid(ws, mus, Ss, sig, per_sd=per_sd); s2 = sig * sig; K = len(ws)
+def arrays(ws, mus, Ss, sig, per_sd=6, min_axis=161, max_points=2_500_000):
+    Y, dA, n = grid(ws, mus, Ss, sig, per_sd=per_sd, min_axis=min_axis, max_points=max_points); s2 = sig * sig; K = len(ws)
     T = [S + s2 * np.eye(2) for S in Ss]; Ti = [np.linalg.inv(t) for t in T]
     lg = [np.log(w) - 0.5 * np.log(np.linalg.det(t)) - np.log(2 * np.pi) for w, t in zip(ws, T)]
     Kg = [S @ ti for S, ti in zip(Ss, Ti)]; Cp = [S - k @ S for S, k in zip(Ss, Kg)]
