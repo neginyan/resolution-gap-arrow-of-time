@@ -1,6 +1,6 @@
 # resolution-gap-arrow-of-time
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23252672.svg)](https://doi.org/10.5281/zenodo.23252672)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23318980.svg)](https://doi.org/10.5281/zenodo.23318980)
 [![verify](https://github.com/neginyan/resolution-gap-arrow-of-time/actions/workflows/verify.yml/badge.svg)](https://github.com/neginyan/resolution-gap-arrow-of-time/actions/workflows/verify.yml)
 
 Code, results and verification for the paper
