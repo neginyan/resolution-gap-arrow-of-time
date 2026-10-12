@@ -36,8 +36,8 @@ This study asks how close a state can bring R to κ when the flow is nonlinear.
   the gap stays proportional to σ (smallest observed 0.916σ).
   Gaussian states are therefore not extremal.
 - **State-wise lower bound (pendulum).** 1 − R ≥ Θ′σ/(1 + Θ′σ/2) − ε̃ − D for every state, from a
-  weighted Cramér–Rao inequality along the contracting direction; at least 0.898σ on all stored states
-  with σ ≤ 10⁻². A uniform bound would follow from control of the focus slope (third derivatives of
+  weighted Cramér–Rao inequality along the contracting direction; at least 0.869σ on all stored states
+  with σ ≤ 10⁻² (0.898σ before the stage L search). A uniform bound would follow from control of the focus slope (third derivatives of
   ln ρ_C), which remains open.
 
 ## Repository layout
@@ -96,8 +96,8 @@ Please cite the paper,
 
 and the archived version of this code:
 
-> T. Namba, *resolution-gap-arrow-of-time: code and verification for "A resolution gap for the coarse-grained arrow of time in nonlinear Hamiltonian flows"*, version v1.0.0, Zenodo (2026),
-> [doi:10.5281/zenodo.23252672](https://doi.org/10.5281/zenodo.23252672).
+> T. Namba, *resolution-gap-arrow-of-time: code and verification for "A resolution gap for the coarse-grained arrow of time in nonlinear Hamiltonian flows"*, version v1.1.0, Zenodo (2026),
+> [doi:10.5281/zenodo.23318980](https://doi.org/10.5281/zenodo.23318980).
 
 ```bibtex
 @misc{namba2026resolutiongap,
@@ -115,11 +115,11 @@ and the archived version of this code:
   title     = {resolution-gap-arrow-of-time: code and verification for
                ``A resolution gap for the coarse-grained arrow of time
                in nonlinear Hamiltonian flows''},
-  version   = {v1.0.0},
+  version   = {v1.1.0},
   publisher = {Zenodo},
   year      = {2026},
-  doi       = {10.5281/zenodo.23252672},
-  url       = {https://doi.org/10.5281/zenodo.23252672}
+  doi       = {10.5281/zenodo.23318980},
+  url       = {https://doi.org/10.5281/zenodo.23318980}
 }
 ```
 

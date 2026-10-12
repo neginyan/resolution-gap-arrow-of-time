@@ -6,6 +6,7 @@ authors:
     given-names: Taishi
     orcid: "https://orcid.org/0009-0002-7098-970X"
 version: v1.1.0
-date-released: 2026-10-09
+date-released: 2026-10-12
+doi: 10.5281/zenodo.23318980
 license: MIT
 repository-code: "https://github.com/neginyan/resolution-gap-arrow-of-time"
