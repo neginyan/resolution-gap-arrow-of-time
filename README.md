@@ -1,6 +1,6 @@
 # resolution-gap-arrow-of-time
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23318980.svg)](https://doi.org/10.5281/zenodo.23318980)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23318980.svg)](https://doi.org/10.5281/zenodo.23318980) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neginyan/resolution-gap-arrow-of-time/blob/main/demo/arrow_of_time_demo.ipynb)
 [![verify](https://github.com/neginyan/resolution-gap-arrow-of-time/actions/workflows/verify.yml/badge.svg)](https://github.com/neginyan/resolution-gap-arrow-of-time/actions/workflows/verify.yml)
 
 Code, results and verification for the paper
@@ -40,6 +40,16 @@ This study asks how close a state can bring R to κ when the flow is nonlinear.
   with σ ≤ 10⁻² (0.898σ before the stage L search). A uniform bound would follow from control of the focus slope (third derivatives of
   ln ρ_C), which remains open.
 
+## Demo: the margin, on a real ensemble
+
+![frame of the demo movie](demo/demo_frame.png)
+
+Pendulums are put on the unstable top in the best Gaussian state for σ = 0.05 and watched through a blur that grows at rate r.
+With the lens fixed (r = 0) the coarse-grained entropy falls; at r = 0.90 it dips; at r = 0.96, below the stretching rate κ = 1 but above the
+critical rate R ≈ 0.952 ≈ 1 − σ + ⅞σ² of the state, it never falls. The notebook [`demo/arrow_of_time_demo.ipynb`](demo/arrow_of_time_demo.ipynb)
+reproduces the movie ([`demo/arrow_of_time_demo.mp4`](demo/arrow_of_time_demo.mp4)) in about a minute on a CPU and checks its numbers against an
+exact kernel sum: [open it in Colab](https://colab.research.google.com/github/neginyan/resolution-gap-arrow-of-time/blob/main/demo/arrow_of_time_demo.ipynb).
+
 ## Repository layout
 
 | path | contents |
@@ -47,6 +57,7 @@ This study asks how close a state can bring R to κ when the flow is nonlinear.
 | `paper/` | LaTeX source (`main.tex`, `sections/`, `figures/`) and the compiled PDF |
 | `study/` | numerical study, stages A–L (stage L: worst states, coupled pendulums, twist-flow chains): scripts, raw results (`results/`), logs, figures, stage summaries |
 | `study/verification/` | verification suite: one script per stage and `run_all_stages.py` |
+| `demo/` | Colab notebook and movie: the resolution margin on a pendulum ensemble |
 | `independent_checks/` | checks written separately from the study code (entropy by finite differences, best Gaussian state) |
 
 `study/README.md` describes every stage and every script; it also lists the commands that regenerate the raw results.
